@@ -88,7 +88,7 @@ format(daily.pattern[most,'time'], format='%H:%M')
 ```
 
 
-## Inputing missing values
+## Imputing missing values
 
 First, we count the number of intervals with missing step counts ("NA's"):
 ```{r}
@@ -117,7 +117,12 @@ median(total.steps.imputed)
 
 Replacing the missing data increases both the mean and median of the total steps.
 
-Finally, we generate a histogram of the imputed dataset:
+We make a simple histogram of the imputed vales:
+```{r histogram_imputed_daily_values}
+qplot(total.steps.imputed, xlab='Total steps', ylab='Frequency')
+```
+
+Finally, we generate a histogram showing the overlay of the imputed dataset with the original data set:
 ```{r 3_histogram_imputed}
 all.steps <- as.data.frame(cbind(total.steps, total.steps.imputed))
 library(reshape)
